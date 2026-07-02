@@ -5,3 +5,29 @@ h2, p{
 body{
     padding-left: 20px;
 }
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
+}
+
+.button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+}
+
+.button--success{
+    background-color: green;
+}
+
+.button--danger{
+    background-color: red;
+}
+
+

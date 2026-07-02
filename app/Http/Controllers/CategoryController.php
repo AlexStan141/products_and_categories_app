@@ -10,10 +10,43 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::all();
-        return view('categories.index', ['categories' => $categories]);
+
+        $query = $request->query();
+        $clean = array_filter($query, fn($v) => $v !== null && $v !== '');
+        if ($clean !== $query) {
+            return redirect()->route('categories.index', $clean);
+        }
+
+        if(in_array('name', array_keys($clean))){
+            $categories = Category::where('name', 'like',  '%' . $clean['name'] . '%');
+        }
+
+        if(in_array('min_price_from', array_keys($clean))){
+            $categories = !isset($categories) ? Category::where('min_price', '>=', $clean['min_price_from'])
+                    : $categories->where('min_price', '>=', $clean['min_price_from']);
+        }
+
+        if(in_array('min_price_to', array_keys($clean))){
+            $categories = !isset($categories) ? Category::where('min_price', '<=', $clean['min_price_to'])
+                    : $categories->where('min_price', '<=', $clean['min_price_to']);
+        }
+
+        if(in_array('max_price_from', array_keys($clean))){
+            $categories = !isset($categories) ? Category::where('max_price', '>=', $clean['max_price_from'])
+                    : $categories->where('max_price', '>=', $clean['max_price_from']);
+        }
+
+        if(in_array('max_price_to', array_keys($clean))){
+            $categories = !isset($categories) ? Category::where('max_price', '<=', $clean['max_price_to'])
+                    : $categories->where('max_price', '<=', $clean['max_price_to']);
+        }
+
+        $categories = isset($categories) ? $categories->get() : Category::all();
+
+        return view('categories.index', compact('categories'));
+
     }
 
     /**
