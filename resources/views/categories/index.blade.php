@@ -35,7 +35,7 @@
             <h2 class="category__name">{{ $category->name }}</h2>
             <p class="category__prices">From ${{ $category->min_price }} To ${{ $category->max_price }}</p>
         </div>
-        <a href="#" class="button">View products</a>
+        <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="button">View products</a>
     </div>
 @endforeach
 </div>
