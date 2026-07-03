@@ -39,5 +39,9 @@ Route::post('categories/{category}', function(Request $request, Category $catego
 
 })->name('categories.products.store');
 
+Route::get('/categories/{category}/products/{product}/edit', function(Category $category, Product $product){
+    //
+});
+
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);

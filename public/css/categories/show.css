@@ -25,3 +25,13 @@
     gap: 20px;
     margin-top: 20px;
 }
+
+.category{
+    font-size: 20px;
+}
+
+.return-back-link{
+    color: blue;
+    display: flex;
+    gap: 5px;
+}

@@ -33,7 +33,7 @@
         Description
         <textarea name="description"></textarea>
     </label>
-    <button type="submit">Add product</button>
+    <button type="submit" class="button button--success">Add product</button>
 </form>
 
 @endsection
