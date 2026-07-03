@@ -32,4 +32,6 @@
 @endforeach
 </div>
 
+<a href="{{ route('categories.products.create', ['category' => $category]) }}" class="button button--success button--bottom">Add product</a>
+
 @endsection

@@ -21,6 +21,7 @@ a{
     background-color: blue;
     color: white;
     border: 0;
+    display: inline-block;
 }
 
 .button--success{
@@ -31,4 +32,12 @@ a{
     background-color: red;
 }
 
+.button--bottom{
+    margin-bottom: 20px;
+}
 
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
