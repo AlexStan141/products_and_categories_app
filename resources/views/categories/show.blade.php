@@ -9,6 +9,9 @@
 
 @section('content')
 <h1>Category products</h1>
+
+<a href="{{ route('categories.index') }}">Back to categories list</a>
+
 <p>Category: <b>{{ $category->name }}</b></p>
 
 <div class="products">
