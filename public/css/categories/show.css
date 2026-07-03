@@ -11,6 +11,10 @@
     gap: 20px
 }
 
+.product__image{
+    width: 200px;
+}
+
 .product__name{
     font-size: 20px;
     font-weight: 700;

@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'name' => fake()->word,
             'price' => fake()->numberBetween(10, 1000),
             'description' => fake()->paragraph(3),
-            'image' => fake()->imageUrl(400, 300),
+            'image' => "https://placehold.co/400x300?text=" . fake()->word(),
             'category_id' => null,
         ];
     }
