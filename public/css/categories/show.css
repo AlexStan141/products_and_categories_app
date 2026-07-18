@@ -35,3 +35,18 @@
     display: flex;
     gap: 5px;
 }
+
+.filter-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 1000px;
+}
+
+.filter-form__actions{
+    display: flex;
+    gap: 10px;
+}

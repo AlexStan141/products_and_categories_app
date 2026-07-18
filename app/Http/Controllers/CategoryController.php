@@ -54,10 +54,24 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Category $category, Request $request)
     {
-        //$products = Product::where('category_id', $category->id)->get();
-        return view('categories.show', ['category' => $category]);
+        $name = $request->input('name');
+        $price_from = $request->input('price_from');
+        $price_to = $request->input('price_to');
+        $description = $request->input('description');
+
+        return view('categories.show', ['category' => $category->load([
+                'products' => fn($q) => $q->when(
+                    $name,
+                    fn($query) => $query->name($name)
+                )->price($price_from, $price_to)
+                ->when(
+                    $description,
+                    fn($query) => $query->description($description)
+                )
+            ])
+        ]);
     }
 
     /**
