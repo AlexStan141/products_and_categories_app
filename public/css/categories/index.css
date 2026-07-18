@@ -23,3 +23,8 @@
     margin-bottom: 20px;
     max-width: 1000px;
 }
+
+.filter-form__actions{
+    display: flex;
+    gap: 10px;
+}

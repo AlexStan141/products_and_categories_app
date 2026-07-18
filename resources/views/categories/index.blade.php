@@ -13,19 +13,22 @@
 <form method="GET" action="{{ route('categories.index') }}" class="filter-form container">
     <label class="filter-form__label">
         Name
-        <input type="text" name="name" class="filter-form__input">
+        <input type="text" name="name" class="filter-form__input" value="{{ request('name') }}">
     </label>
     <label class="filter-form__label">
         Min price
-        From <input type="number" name="min_price_from" class="filter-form__input">
-        To <input type="number" name="min_price_to" class="filter-form__input">
+        From <input type="number" name="min_price_from" class="filter-form__input" value="{{ request('min_price_from') }}">
+        To <input type="number" name="min_price_to" class="filter-form__input"  value="{{ request('min_price_to') }}">
     </label>
     <label class="filter-form__label">
         Max price
-        From <input type="number" name="max_price_from" class="filter-form__input">
-        To <input type="number" name="max_price_to" class="filter-form__input">
+        From <input type="number" name="max_price_from" class="filter-form__input" value="{{ request('max_price_from') }}">
+        To <input type="number" name="max_price_to" class="filter-form__input" value="{{ request('max_price_to') }}">
     </label>
-    <button type="submit" class="button">Filter</button>
+    <div class="filter-form__actions">
+        <button type="submit" class="button">Filter</button>
+        <a href="{{ route('categories.index') }}" class="button button--danger">Clear</a>
+    </div>
 </form>
 
 <div class="categories">

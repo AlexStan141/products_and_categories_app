@@ -13,38 +13,23 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
+        $categories = Category::latest();
 
-        $query = $request->query();
-        $clean = array_filter($query, fn($v) => $v !== null && $v !== '');
-        if ($clean !== $query) {
-            return redirect()->route('categories.index', $clean);
-        }
+        $name = $request->input('name');
+        $min_price_from = $request->input('min_price_from');
+        $min_price_to = $request->input('min_price_to');
+        $max_price_from = $request->input('max_price_from');
+        $max_price_to = $request->input('max_price_to');
 
-        if(in_array('name', array_keys($clean))){
-            $categories = Category::where('name', 'like',  '%' . $clean['name'] . '%');
-        }
+        $categories = $categories->when(
+            $name,
+            fn($query, $name) => $query->name($name)
+        );
 
-        if(in_array('min_price_from', array_keys($clean))){
-            $categories = !isset($categories) ? Category::where('min_price', '>=', $clean['min_price_from'])
-                    : $categories->where('min_price', '>=', $clean['min_price_from']);
-        }
+        $categories = $categories->minPriceInterval($min_price_from, $min_price_to);
+        $categories = $categories->maxPriceInterval($max_price_from, $max_price_to);
 
-        if(in_array('min_price_to', array_keys($clean))){
-            $categories = !isset($categories) ? Category::where('min_price', '<=', $clean['min_price_to'])
-                    : $categories->where('min_price', '<=', $clean['min_price_to']);
-        }
-
-        if(in_array('max_price_from', array_keys($clean))){
-            $categories = !isset($categories) ? Category::where('max_price', '>=', $clean['max_price_from'])
-                    : $categories->where('max_price', '>=', $clean['max_price_from']);
-        }
-
-        if(in_array('max_price_to', array_keys($clean))){
-            $categories = !isset($categories) ? Category::where('max_price', '<=', $clean['max_price_to'])
-                    : $categories->where('max_price', '<=', $clean['max_price_to']);
-        }
-
-        $categories = isset($categories) ? $categories->get() : Category::all();
+        $categories = $categories->get();
 
         return view('categories.index', compact('categories'));
 
