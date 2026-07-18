@@ -21,7 +21,7 @@
 <p class="category">Category: <b>{{ $category->name }}</b></p>
 
 <div class="products">
-@foreach ($products as $product)
+@foreach ($category->products as $product)
     <div class="product">
         <img src="{{ $product->image }}" class="product__image">
         <div class="product__info">

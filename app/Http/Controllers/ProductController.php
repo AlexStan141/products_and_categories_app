@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Category;
@@ -28,9 +29,20 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request, Category $category)
     {
-        //
+        $data = $request->validated();
+        $imagePath = $data['image']->store('product_images', 'public');
+
+        Product::create([
+            'category_id' => $category->id,
+            'name' => $data['name'],
+            'price' => $data['price'],
+            'description' => $data['description'],
+            'image' => '/storage/' . $imagePath
+        ]);
+
+        return view('categories.show', ['category' => $category]);
     }
 
     /**
