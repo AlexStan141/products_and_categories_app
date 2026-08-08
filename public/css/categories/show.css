@@ -50,3 +50,12 @@
     display: flex;
     gap: 10px;
 }
+
+.flash{
+    padding: 10px;
+    background-color: lightgreen;
+}
+
+.category__info{
+    color: gray;
+}

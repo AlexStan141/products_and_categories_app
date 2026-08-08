@@ -2,6 +2,7 @@
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+<link rel="stylesheet" href="{{ asset('css/categories/products/create.css') }}">
 @endsection
 
 @section('title', 'Create product')
@@ -10,15 +11,24 @@
 
 <h1>Create product</h1>
 
+<p>{{ session()->has('price_range_error') }}</p>
+
 <form method="POST" action="{{ route('categories.products.store', ['category' => $category]) }}" enctype="multipart/form-data">
     @csrf
-    <label>
-        Category
-        <input type="text" name="category" value="{{ $category->name }}" disabled>
-        @error('category')
-            <p>{{ $message }}</p>
-        @enderror
-    </label>
+
+    <input type="hidden" name="category_id" value="{{ $category->id }}">
+
+    <div class="category-field">
+        <label>
+            Category
+            <input type="text" name="category" value="{{ $category->name }}" disabled>
+            @error('category')
+                <p>{{ $message }}</p>
+            @enderror
+        </label>
+        <p class="category__info">{{ $category->min_price }}$ - {{ $category->max_price }}$</p>
+    </div>
+
     <label>
         Name
         <input type="text" name="name">

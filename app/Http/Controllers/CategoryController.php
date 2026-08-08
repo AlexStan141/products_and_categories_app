@@ -69,7 +69,7 @@ class CategoryController extends Controller
                 ->when(
                     $description,
                     fn($query) => $query->description($description)
-                )
+                )->latest()
             ])
         ]);
     }

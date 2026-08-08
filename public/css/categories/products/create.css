@@ -1,0 +1,8 @@
+.category__info{
+    color: gray;
+}
+
+.category-field{
+    display: flex;
+    gap: 20px;
+}

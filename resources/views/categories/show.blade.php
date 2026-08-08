@@ -18,6 +18,7 @@
 </a>
 
 <p class="category">Category: <b>{{ $category->name }}</b></p>
+<p class="category__info">{{ $category->min_price }}$ - {{ $category->max_price }}$</p>
 
 <form method="GET" action="{{ route('categories.show', ['category' => $category]) }}" class="filter-form container">
     <label class="filter-form__label">
@@ -38,6 +39,10 @@
         <a href="{{ route('categories.show', ['category' => $category]) }}" class="button button--danger">Clear</a>
     </div>
 </form>
+
+@if(session()->has('success'))
+    <p class="flash">{{ session('success') }}</p>
+@endif
 
 <div class="products">
 @foreach ($category->products as $product)

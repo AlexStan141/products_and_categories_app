@@ -42,7 +42,8 @@ class ProductController extends Controller
             'image' => '/storage/' . $imagePath
         ]);
 
-        return view('categories.show', ['category' => $category]);
+        return view('categories.show', ['category' => $category])
+            ->with('success', 'Product created successfully!');
     }
 
     /**
