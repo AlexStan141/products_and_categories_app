@@ -56,10 +56,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category, Request $request)
     {
-        $name = $request->input('name');
+        $name = $request->input('filter_name');
         $price_from = $request->input('price_from');
         $price_to = $request->input('price_to');
-        $description = $request->input('description');
+        $description = $request->input('filter_description');
 
         return view('categories.show', ['category' => $category->load([
                 'products' => fn($q) => $q->when(

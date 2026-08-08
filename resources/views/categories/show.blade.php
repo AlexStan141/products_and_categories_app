@@ -23,7 +23,7 @@
 <form method="GET" action="{{ route('categories.show', ['category' => $category]) }}" class="filter-form container">
     <label class="filter-form__label">
         Name
-        <input type="text" name="name" class="filter-form__input" value="{{ request('name') }}">
+        <input type="text" name="filter_name" class="filter-form__input" value="{{ request('filter_name') }}">
     </label>
     <label class="filter-form__label">
         Price
@@ -32,7 +32,7 @@
     </label>
     <label class="filter-form__label">
         Description
-        <input type="text" name="description" class="filter-form__input" value="{{ request('description') }}">
+        <input type="text" name="filter_description" class="filter-form__input" value="{{ request('filter_description') }}">
     </label>
     <div class="filter-form__actions">
         <button type="submit" class="button">Filter</button>

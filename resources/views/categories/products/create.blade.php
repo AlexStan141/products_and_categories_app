@@ -31,28 +31,28 @@
 
     <label>
         Name
-        <input type="text" name="name">
+        <input type="text" name="name" value="{{ old('name') }}">
         @error('name')
             <p>{{ $message }}</p>
         @enderror
     </label>
     <label>
         Price
-        <input type="number" name="price">
+        <input type="number" name="price" value="{{ old('price') }}">
         @error('price')
             <p>{{ $message }}</p>
         @enderror
     </label>
     <label>
         Image
-        <input type="file" name="image">
+        <input type="file" name="image" value="{{ old('image') }}">
         @error('image')
             <p>{{ $message }}</p>
         @enderror
     </label>
     <label>
         Description
-        <textarea name="description"></textarea>
+        <textarea name="description">{{ old('description') }}</textarea>
         @error('description')
             <p>{{ $message }}</p>
         @enderror
