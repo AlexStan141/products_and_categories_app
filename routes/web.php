@@ -9,5 +9,4 @@ Route::get('/', function () {
 });
 
 Route::resource('categories', CategoryController::class);
-Route::resource('categories.products', ProductController::class)
-    ->scoped(['product' => 'category']);
+Route::resource('categories.products', ProductController::class);

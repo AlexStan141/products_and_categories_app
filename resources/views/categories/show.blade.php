@@ -54,7 +54,7 @@
             <p>{{ $product->description }}</p>
             <div class="product__actions">
                 <a href="#" class="button button--success">Edit</a>
-                <form action="" method="POST">
+                <form action="{{ route('categories.products.destroy', ['category' => $category->id, 'product' => $product->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="button button--danger">Delete</button>

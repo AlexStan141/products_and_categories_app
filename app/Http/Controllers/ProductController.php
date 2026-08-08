@@ -15,7 +15,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -51,7 +50,6 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -59,7 +57,6 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
     }
 
     /**
@@ -67,14 +64,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category, Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('categories.show', ['category' => $category]);
     }
 }
